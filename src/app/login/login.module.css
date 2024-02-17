@@ -1,0 +1,122 @@
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.wrapper {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+    width: 370px;
+}
+
+.loginForm{
+    padding: 10px 0;
+}
+
+.paragraph {
+    color: #000;
+    margin-top: 12px;
+}
+
+.show{
+    display: block;
+    color: #fff;
+    background-color: rgb(255, 2, 0);
+    padding: 8px 16px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.hide{
+    display: none;
+}
+
+.link {
+    color: #017156;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.orContainer {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.divider {
+    flex-grow: 1;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+.orText {
+    padding: 0 10px;
+    color: #777;
+    font-weight: bold;
+}
+
+.Label {
+    display: block;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.Input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+.Input:focus {
+    outline: none;
+    box-shadow: 0 0 1px 0.5px #094133;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px 36px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-image 0.3s;
+}
+
+.loginBtn{
+    margin-top: 10px;
+}
+
+.socialButton {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    width: 100%;
+    padding: 12px 36px;
+    border: none;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #000;
+    margin-bottom: 12px;
+    cursor: pointer;
+    border: 1px solid #4CAF50;
+}
+
+/* Social button style for the last button
+.socialButton:last-child {
+    margin-bottom: 0;
+} */
