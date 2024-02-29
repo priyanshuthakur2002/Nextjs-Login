@@ -26,3 +26,17 @@ export async function createUserWithAccount({name, email, password}){
         throw error;
     }
 }
+
+export async function getUserByEmail(email) {
+    try {
+        const user = await prisma.user.findUnique({
+            where: {
+                email,
+            },
+        });
+        return user;
+    } catch (error) {
+        console.error('Error getting user by email: ', error);
+        throw error;
+    }
+}

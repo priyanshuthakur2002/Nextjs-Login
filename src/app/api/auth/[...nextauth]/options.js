@@ -3,6 +3,7 @@ import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/lib/prisma";
+import bcrypt from 'bcryptjs';
 
 export const options = {
   adapter: PrismaAdapter(prisma),
@@ -33,10 +34,21 @@ export const options = {
           },
         });
 
-        if (!user) {
-          return null;
-        }
-        if (email === user.email && password === user?.password) {
+        // if (!user) {
+        //   return null;
+        // }
+        // if (email === user.email && password === user?.password) {
+        //   return user;
+        // } else {
+        //   return null;
+        // }
+
+        const hashedPassword = user.password;
+
+        // Compare the plain-text password with the hashed password
+        const passwordMatch = await bcrypt.compare(password, hashedPassword);
+        
+        if (passwordMatch) {
           return user;
         } else {
           return null;

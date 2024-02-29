@@ -2,12 +2,14 @@
 import axios from "axios";
 import { useState } from "react";
 import styles from './CreateAccount.module.css'; // Import CSS module
+import { useRouter } from "next/navigation";
 
 export default function CreateAccount() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState("");
+    const router = useRouter();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -17,15 +19,19 @@ export default function CreateAccount() {
                 email,
                 password,
             });
-            if(response.error){
-                setError(response.error);
-            }
-            console.log('User created with account: ', response.data);
+            router.push('/');
         } catch (error) {
-            console.log("Error creating user with account: ", error);
-            setError(error.message || "An error occured");
+            if (error.response && error.response.status === 400) {
+                // Handle 400 Bad Request (email already exists)
+                setError("Email already exist");
+            } else {
+                // Handle other errors
+                console.log("Error creating user with account: ", error.response);
+                setError("An error occurred");
+            }
         }
     }
+    
 
     return (
         <div className={styles.createAccountContainer}>
@@ -68,7 +74,7 @@ export default function CreateAccount() {
                         />
                     </div>
                     <button type="submit" className={styles.btn}>Create User</button>
-                    {error && <div className={styles.show}>Error: {error}</div>}
+                    
                 </form>
             </div>
         </div>
