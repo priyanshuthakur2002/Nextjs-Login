@@ -3,8 +3,20 @@ import { NextResponse } from "next/server";
 
 export const POST = async(req, res)=>{
     try{
-
         const {name, email, password} = await req.json();
+
+
+        // Check if email already exists
+        const existingUser = await prisma.user.findUnique({
+            where: {
+                email: email
+            }
+        });
+
+        if (existingUser) {
+            return NextResponse.json({ error: 'Email already exists' }, {status: 400});
+        }
+
         const newUser = await createUserWithAccount({
             name,
             email,
